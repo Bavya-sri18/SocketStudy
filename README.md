@@ -81,12 +81,10 @@ while True:
 	print(s.recv(1024).decode())
 	s.send("Acknowledgement Recived".encode())
 ```
-
 ## Output:
 ### Client:
 ![image](https://github.com/user-attachments/assets/7eef7a53-2696-4f42-bf6d-6cf264314a10)
 ### Server:
 ![image](https://github.com/user-attachments/assets/64a68512-f93e-4fcc-87c2-f30df928aed6)
-
 ## Result:
 Thus the study of Socket Programming Completed Successfully
