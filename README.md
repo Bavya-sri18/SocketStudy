@@ -57,34 +57,34 @@ Socket programming finds applications in various domains, including web developm
 ### Client:
 ```
 import socket
+from datetime import datetime
 s=socket.socket()
 s.bind(('localhost',8000))
 s.listen(5)
 c,addr=s.accept()
-while True:
-	i=input("Enter a data: ")
-	c.send(i.encode())
-	ack=c.recv(1024).decode()
-	if ack:
-		print(ack)
-		continue
-	else:
-		c.close()
-		break
+print("Client Address : ",addr)
+now = datetime.now()
+c.send(now.strftime("%d/%m/%Y %H:%M:%S").encode())
+ack=c.recv(1024).decode()
+if ack:
+    print(ack)
+c.close()
 ```
 ### Server:
 ```
 import socket
 s=socket.socket()
 s.connect(('localhost',8000))
-while True:
-	print(s.recv(1024).decode())
-	s.send("Acknowledgement Recived".encode())
+print(s.getsockname())
+print(s.recv(1024).decode())
+s.send("acknowledgement recived from the server".encode())
 ```
 ## Output:
 ### Client:
-![image](https://github.com/user-attachments/assets/7eef7a53-2696-4f42-bf6d-6cf264314a10)
+![CN client1a](https://github.com/user-attachments/assets/ff879e16-89e6-4ecc-be56-f0a1c69de16f)
+
 ### Server:
-![image](https://github.com/user-attachments/assets/64a68512-f93e-4fcc-87c2-f30df928aed6)
+![CN server1a](https://github.com/user-attachments/assets/517b9b4a-a464-4bb6-ab37-3c89735e3146)
+
 ## Result:
 Thus the study of Socket Programming Completed Successfully
